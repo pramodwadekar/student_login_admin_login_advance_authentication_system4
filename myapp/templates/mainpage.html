@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <div>
+        <center>
+    <form action="{% url 'admin' %}"  method="post" class="d-flex">
+        {% csrf_token %}
+        <button class="btn btn-success btn-sm px-3 mx-2" name="">Admin Login</button>
+    </form>
+    <br><br>
+
+    <form action="{% url 'register_page' %}" method="post" class="d-flex">
+        {% csrf_token %} 
+        <button class="btn btn-success btn-sm px-3 mx-2" name="search">Student Register</button>
+    </form>
+    <br><br>
+    <form action="{% url 'loginpage' %}" method="post" class="d-flex">
+        {% csrf_token %}
+        <button class="btn btn-success btn-sm px-3 mx-2" name="search">Student Login</button>
+    </form>
+    </center>
+</div>
+</body>
+</html>

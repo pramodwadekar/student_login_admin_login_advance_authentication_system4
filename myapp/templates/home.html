@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+</head>
+<body>
+
+    <center>
+        <h1>welcome {{request.session.Fullname}}</h1>
+        <b>ID: </b>{{request.session.id}}
+        <br><br>
+        <b>Fullname: </b>{{request.session.Fullname}}
+        <br><br>
+    <form action="{% url 'edit_student'%}" method = "post">
+        {% csrf_token %} 
+        <div>
+            <button type="submit" class="btn btn-primary" name="update">Update Data</button>
+        </div>
+    </form>
+    </center>
+    
+</body>
+</html>
+
+

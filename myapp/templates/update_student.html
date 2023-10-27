@@ -1,0 +1,167 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>SignUp Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Custom Theme files -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- //web font -->
+	<!-- choosen css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/chosen.css' %}">
+</head>
+
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Update Data</h1>
+		<center><h3 style = "color: red;">{{msg}}</h3></center>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                {% if key2 %}
+				<form action="{% url 'update_student'%}" method="post">
+					{% csrf_token %}
+					<input class="text email" type="text" name="fname" value = {{key2.Fullname}} required="">
+					<input class="text email" type="date" name="dob" value="{{key2.DOB | date:"Y-m-d" }}" required="">
+					<input class="text email" type="email" name="email" value ="{{key2.Email}}" required="">
+					<input class="text email" type="number" name="age" value ="{{key2.Age}}" required="">
+					<select id="gender" name="gender" class="form-select" required>
+						<option value="">Select Gender</option>
+						<option value="male" {% if key2.Gender == 'male' %} selected {% else %} "" {% endif %}>Male</option>
+						<option value="female"{% if key2.Gender == 'female' %} selected {% else %} "" {% endif %} >Female</option>
+						<option value="other" {% if key2.Gender == 'other' %} selected {% else %} "" {% endif %}>Other</option>
+					</select>
+
+					<div class="mt-3">
+                        <select name="country" class="countries form-control">
+                            <option value="">Select Country</option>
+                            <!-- <option value="{{key2.Country}}" selected>{{key2.Country}}</option> -->
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <select name="state" class="states form-control">
+                            <option value="">Select State</option>
+                            <!-- <option value="{{key2.State}}"selected>{{key2.State}}</option> -->
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <select name="city" class="cities form-control">
+                            <option value="">Select City</option>
+                            <!-- <option value="{{key2.City}}" selected>{{key2.City}}</option> -->
+                        </select>
+                    </div>
+                        
+                        <div>
+                            <label class="control-label">Qualification</label>
+                            <div class="controls">
+                                <label class="radio inline">
+                                    <input type="radio" name="qualification" value="BE" required {% if key2.Qualification == 'BE' %} checked {% else %} "" {% endif %}  />
+                                    BE
+                                </label>
+                                <label class="mx-2">
+                                    <input type="radio" name="qualification" value="BCA" required {% if key2.Qualification == 'BCA' %} checked {% else %} "" {% endif %} />
+                                    BCA
+                                </label>
+                                <label class="mx-2">
+                                    <input type="radio" name="qualification" value=" MCA" required {% if key2.Qualification == 'MCA' %} checked {% else %} "" {% endif %} />
+                                    MCA
+                                </label>
+                                <label class="mx-2">
+                                    <input type="radio" name="qualification" value="BA" required {% if key2.Qualification == 'BA' %}  checked {% else %} "" {% endif %} />
+                                    BA
+                                </label>
+                                <label class="mx-2">
+                                    <input type="radio" name="qualification" value="B.Com" required {% if key2.Qualification == 'B.Com' %}  checked {% else %} "" {% endif %} />
+                                    B.Com
+                                </label>
+                                <label class="mx-2">
+                                    <input type="radio" name="qualification" value="B.Sc" required  {% if key2.Qualification == 'B.Sc' %}  checked {% else %} "" {% endif %} />
+                                    B.Sc
+                                </label>
+                            </div>
+							<br>
+							<br>
+                        
+                            <div>
+								<label class="control-label">Select Subject</label>
+                                <select id="subject" name="subject" class="form-select chosen_new" multiple>
+                                    <option value="physics" {% if "physics" in key2.Subject %} selected {% endif %}>Physics</option>
+                                    <option value="chemistry" {% if "chemistry" in key2.Subject %} selected {% endif %}>Chemistry</option>
+                                    <option value="maths" {% if "maths" in key2.Subject %} selected {% endif %}>Maths</option>
+                                    <option value="biology" {% if "biology" in key2.Subject %} selected {% endif %}>Biology</option>
+                                </select>
+                            </div>
+							
+					<input type="submit" value="Update data">
+				</form>
+                {% endif %}
+                
+			
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/"
+					target="_blank">Colorlib</a></p>
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+	<!-- choosen jquery.js -->
+<script src="{% static 'js/jquery.js' %}"></script>
+
+<!-- state,country,city js file  -->
+<script src="{% static 'js/app.js' %}"></script>
+
+
+<!-- main page script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+       
+        <!-- choosen jquery -->
+        <script src="{% static 'js/chosen.jquery.js' %}"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $(".chosen_new").chosen();
+                $('#subject').change(function() {
+                    var selectedOptions = $('#subject option:selected');
+                    var selectedList = $('#selected-options ul');
+                    selectedList.empty();
+                    selectedOptions.each(function() {
+                        selectedList.append('<li>' + $(this).text() + '</li>');
+                    });
+                });
+            });
+            </script>
+</body>
+
+</html>
